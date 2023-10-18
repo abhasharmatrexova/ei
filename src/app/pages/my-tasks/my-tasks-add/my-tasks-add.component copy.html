@@ -1,0 +1,121 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="My Task" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Form</h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Name</h5>
+                            <div class="light">
+                                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'firstName'" [type]="'text'"></app-fields>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Email</h5>
+                            <div class="light">
+                                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'email'" [type]="'email'"></app-fields>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Country Code</h5>
+                            <div class="light">
+                                <app-country  
+                                [parentForm]="parentForm" 
+                                [selectedAccount]="selectedAccount" 
+                                [item]="countries" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'countryCode'">
+                                </app-country>                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Phone</h5>
+                            <div class="light">
+                                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'phone'" [type]="'text'"></app-fields>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Time Picker</h5>
+                            <div class="light">
+                                <app-picker [type]="3"></app-picker>                   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Date Picker</h5>
+                            <div class="light">
+                                <app-picker [type]="2"></app-picker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Text Area</h5>
+                            <div class="light">
+                                <app-ckeditor></app-ckeditor>                  
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Location</h5>
+                            <div class="light">
+                                <app-place-autocomplete></app-place-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                      <!-- <button type="submit">Submit</button> -->
+                      <app-button [buttonType]="'primary'" ></app-button>
+
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

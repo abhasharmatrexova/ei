@@ -1,0 +1,171 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Add New Agents" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <!--<h4 class="card-title mb-0">Please enter New Agent Details</h4>-->
+      </div>
+      <div class="card-body">
+        <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+
+          <div class="row gy-12">
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Name</h5>
+                <div class="light">
+                  <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'agentName'" [type]="'text'" [placeholder]="'Agent Name'"></app-fields>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Select Country</h5>
+                <div class="light">
+                  <app-country
+                    [parentForm]="parentForm"
+                    [selectedAccount]="selectedAccount"
+                    [item]="countries"
+                    [isCodeRequired]="true"
+                    [submit]="submitted"
+                    [controlName]="'countryCode'">
+                  </app-country>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Select City</h5>
+                <div class="light">
+                  <app-country
+                    [parentForm]="parentForm"
+                    [selectedAccount]="selectedAccountCity"
+                    [item]="countries"
+                    [isCodeRequired]="true"
+                    [submit]="submitted"
+                    [controlName]="'cityCode'">
+                  </app-country>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row gy-12 includeChildComponent">
+            <div class="col-sm-6">
+              <div class="form-control">
+               <h4 class="fs-sm fw-medium text-muted">Phone</h4>
+                  <app-agents-phone></app-agents-phone>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-control">
+                <h5 class="fs-sm fw-medium text-muted">Email</h5>
+                <div class="light">
+                  <app-agents-emails></app-agents-emails>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row gy-12 internalFormElementsAfterExternalUI">
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Parent</h5>
+                <div class="light">
+                  <app-country
+                    [parentForm]="parentForm"
+                    [selectedAccount]=""
+                    [item]=""
+                    [isCodeRequired]="true"
+                    [submit]="submitted"
+                    [controlName]="'parentAgentId'">
+                  </app-country>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">HQ</h5>
+                <div class="light">
+                  <app-country
+                    [parentForm]="parentForm"
+                    [selectedAccount]=""
+                    [item]=""
+                    [isCodeRequired]="true"
+                    [submit]="submitted"
+                    [controlName]="'hqAgentId'">
+                  </app-country>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Status</h5>
+                <div class="light">
+                  <app-country
+                    [parentForm]="parentForm"
+                    [selectedAccount]=""
+                    [item]=""
+                    [isCodeRequired]="true"
+                    [submit]="submitted"
+                    [controlName]="'status'">
+                  </app-country>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row gy-12 includeChildComponent">
+            <div class="col-sm-12">
+              <div class="form-control">
+                <h4 class="fs-sm fw-medium text-muted">Staff</h4>
+                <app-agents-ui-staff></app-agents-ui-staff>
+              </div>
+            </div>
+          </div>
+          <div class="row gy-4 internalFormElementsAfterExternalUI">
+            <div class="col-sm-6">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Blacklist Comments</h5>
+                <div class="light">
+                  <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'blacklist_comments'" [type]="'textarea'" [placeholder]="'Blacklist Comments'"></app-fields>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div>
+                <h5 class="fs-sm fw-medium text-muted">Approve Comments</h5>
+                <div class="light">
+                  <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'approve_comments'" [type]="'textarea'" [placeholder]="'Approve Comments'"></app-fields>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="row gy-4 formButtonDiv">
+            <div class="col-sm-6">
+              <!-- <button type="submit">Submit</button> -->
+              <app-button [buttonType]="'primary'" ></app-button>
+
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->

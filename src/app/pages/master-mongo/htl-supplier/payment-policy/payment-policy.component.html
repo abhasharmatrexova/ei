@@ -1,0 +1,71 @@
+<div class="container">  
+     
+    <form [formGroup]="productForm" >  
+        
+      <div formArrayName="PaymentPolicy">
+
+        <div *ngFor="let Payment of PaymentPolicy().controls; let i=index" [formGroupName]="i">  
+
+            <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <input
+                            type="text" 
+                            class="form-control flatpickr-input" 
+                            bsDatepicker
+                            showWeekNumbers="false"
+                            [placeholder]="'Payment Policy Dates '+(i+1)" 
+                            formControlName="wef_date"
+                            [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue',showWeekNumbers: false }">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <ng-select 
+                            formControlName="language" 
+                            [items]="lang"  
+                            [placeholder]="'Select Language'"
+                            bindLabel="text" 
+                            bindValue="id">
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                    {{item.text}}
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row gy-3" >
+              <div class="col-sm-10">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Description '+(i+1)" id="{{'description'+i}}" class="form-control"
+                        [id]="'description'+i" type="text" formControlName="description" />
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-2">
+                <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+            </div>
+
+            </div>
+          
+
+          </div>
+
+      </div>
+    </form>   
+        
+    <br/>  
+  </div>  

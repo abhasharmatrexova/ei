@@ -1,0 +1,26 @@
+<!-- <app-listjs></app-listjs> -->
+
+
+<!-- <app-datatable [userdata]="userTabledata"></app-datatable> -->
+
+
+<app-datatable
+
+  [theadData]="theadData"
+  [tbodyData]="tbodyDataComputed"
+
+  [p]="p"
+  [itemsPerPage]="itemsPerPage"
+  [searchValue]="searchValue"
+  [sortKey]="sortKey"
+  [reverse]="reverse"
+  [selectAll]="selectAll"
+  [statusCounts]="statusCounts"
+
+></app-datatable>
+    <!-- [tbodyData]="tbodyDataComputed"
+  (changeStatus)="changeStatus($event)"
+  (checkMobPartner)="checkMobPartner($event)"
+  (openPartnerModule)="openPartnerModule($event)"
+  (sendNotification)="sendNotification($event)"
+  (editCommission)="editCommission($event)" -->

@@ -1,0 +1,236 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Ferry Services" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Form</h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+
+                <div class="row gy-4">
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Code</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'code'"
+                                [type]="'text'"
+                                [placeholder]="'Code'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Name</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'name'"
+                                [type]="'text'"
+                                [placeholder]="'Name'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Ferry Type</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Ferry Services'" 
+                                [items]="ferry_types" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'ferry_type'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Ferry Class</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Ferry Class'" 
+                                [items]="ferry_classs" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'ferry_class'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Room</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Room'" 
+                                [items]="rooms" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'room'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row mt-3">
+                    <div class="col-sm-6">
+                        <div class="row mt-3">
+                            <div class="col-sm-6">
+                                <h5 class="fs-sm fw-medium text-muted">From City</h5>
+                                <div class="light">
+                                    <app-select  
+                                    [parentForm]="parentForm" 
+                                    [placeholder]="'From City'" 
+                                    [items]="cities" 
+                                    [isCodeRequired]="true" 
+                                    [submit]="submitted" 
+                                    [controlName]="'from_city'"
+                                    [groupType]="true"
+                                    [groupBy]="'country'"
+                                    
+                                    >
+                                    </app-select>                                
+                                                     
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h5 class="fs-sm fw-medium text-muted">From Geo Location</h5>
+                                <div class="light">
+                                    <app-place-autocomplete
+                                    [parentForm]="parentForm"
+                                    [submit]="submitted"
+                                    [controlName]="'from_location'"
+                                    [id]="'from_location'"
+                                    [type]="'text'"                                
+                                    [placeholder]="'Enter location'"
+                                    (setAddress)="getAddress1($event)"
+                                    > 
+                                    >
+                                    </app-place-autocomplete>
+                               
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row mt-3">
+                            <div class="col-sm-6">
+                                <h5 class="fs-sm fw-medium text-muted">To City</h5>
+                                <div class="light">
+                                    <app-select  
+                                    [parentForm]="parentForm" 
+                                    [placeholder]="'To City'" 
+                                    [items]="cities" 
+                                    [isCodeRequired]="true" 
+                                    [submit]="submitted" 
+                                    [controlName]="'to_city'"
+                                    [groupType]="true"
+                                    [groupBy]="'country'"
+                                    >
+                                    </app-select>                                
+                                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="light">
+                                <h5 class="fs-sm fw-medium text-muted">To Geo Location</h5>
+                                    <app-place-autocomplete
+                                    [parentForm]="parentForm"
+                                    [submit]="submitted"
+                                    [controlName]="'to_location'"
+                                    [id]="'to_location'"
+                                    [type]="'text'"                                
+                                    [placeholder]="'Enter location'"
+                                    (setAddress)="getAddress($event)"
+                                    > 
+                                    >
+                                    </app-place-autocomplete>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Route</h5>
+                        </div>
+                        
+                        <div formArrayName="ferryRoute_details" >
+                            <div *ngFor="let ferryRouteItemForm of ferryRoute_details.controls; let index = index" class="row mt-3"  >
+                                <div [formGroupName]="index" class="col-sm-4">
+                                    <h5 class="fs-sm fw-medium text-muted">City</h5>                             
+
+                                    <ng-select 
+                                        formControlName="city" 
+                                        [items]="cities" 
+                                        [searchFn]="customSearchFn" 
+                                        bindLabel="text" 
+                                        bindValue="id"
+                                        [groupBy]="'country'">
+                                        <ng-template ng-optgroup-tmp let-item="item">
+                                            {{item.country || 'Unnamed group'}}
+                                        </ng-template>
+                                    </ng-select>
+                                </div>
+                                <div [formGroupName]="index" class="col-sm-4">
+                                    <h5 class="fs-sm fw-medium text-muted">Google Location</h5>
+                                    <input [placeholder]="'Location '+(index+1)" id="{{'name'+index}}" class="form-control google-autocomplete" [id]="'google-autocomplete'+index" type="text" formControlName="geo_location" />
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <button *ngIf="index == 0" type="button" (click)="addNewItem()" class="btn btn-primary mt-4" placement="top" tooltip="Add More Item">
+                                        <i class="ri-menu-add-fill"></i>
+                                    </button>
+                                    <button *ngIf="index > 0" type="button" (click)="removeNewItem(index)" class="btn btn-danger mt-4" placement="top" tooltip="Add More Item">
+                                        <i class="ri-menu-unfold-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row gy-4 pt-3">
+                    <div class="col-sm-4">
+                       <app-button [buttonType]="'primary'" [disabled]="submitted"></app-button>
+                       <a routerLink="/ferry-services" class="btn btn-danger ms-2">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+

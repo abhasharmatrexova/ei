@@ -1,0 +1,39 @@
+
+
+<!-- INPUT FIELD COMPONENT -->
+
+<div [formGroup]="parentForm">
+    <div class="d-flex inliner-container flex-wrap">
+      <div class="mx-1 mb-1" *ngFor="let item of items">
+          <button type="button"
+            class="btn  btn-sm"
+            (click)="itemClicked(item)"
+            (change) ="onValueChanged()"
+            [ngClass]="item.selected?'btn-success':'btn-outline-success'"
+          >
+            {{item.text}}
+          </button>
+          
+      </div>
+      
+  </div>
+    <!-- Validation-->
+
+      <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        <!-- Check for the "minlength" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('minlength')">
+          {{ controlName | titlecase }} must have at least {{ parentForm.get(controlName)?.getError('minlength')?.requiredLength }} characters (currently {{ parentForm.get(controlName)?.getError('minlength')?.actualLength }} characters).
+        </span>
+      </div>
+
+</div>
+
+
+
+<!--<div *ngIf="submit && parentForm && parentForm.controls['firstName'] &&
+parentForm.controls['firstName'].errors &&
+parentForm.controls['firstName'].errors['required']" class="error-message">
+First Name is required.</div> -->
+

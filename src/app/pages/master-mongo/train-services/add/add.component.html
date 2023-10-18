@@ -1,0 +1,163 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Train Services" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Form</h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+
+                <div class="row gy-4">
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Code</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'code'"
+                                [type]="'text'"
+                                [placeholder]="'Code'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Name</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'name'"
+                                [type]="'text'"
+                                [placeholder]="'Name'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Train Type</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Train Services'" 
+                                [items]="train_types" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'train_type'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Train Class</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Train Class'" 
+                                [items]="train_classs" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'train_class'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">From City</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'From City'" 
+                                [items]="cities" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'from_city'">
+                                </app-select>                                
+                                                 
+                            </div>
+
+                            <div class="light">
+                                <app-place-autocomplete
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'from_location'"
+                                [id]="'from_location'"
+                                [type]="'text'"                                
+                                [placeholder]="'Enter location'"
+                                (setAddress)="getAddress1($event)"
+                                > 
+                                >
+                                </app-place-autocomplete>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">To City</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'To City'" 
+                                [items]="cities" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'to_city'">
+                                </app-select>                                
+                                                 
+                            </div>
+
+                            <div class="light">
+                                <app-place-autocomplete
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'to_location'"
+                                [id]="'to_location'"
+                                [type]="'text'"                                
+                                [placeholder]="'Enter location'"
+                                (setAddress)="getAddress($event)"
+                                > 
+                                >
+                                </app-place-autocomplete>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+                <div class="row gy-4 pt-3">
+                    <div class="col-sm-4">
+                       <app-button [buttonType]="'primary'" [disabled]="submitted"></app-button>
+                       <a routerLink="/train-services" class="btn btn-danger ms-2">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+

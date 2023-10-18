@@ -1,0 +1,43 @@
+
+<!-- 
+  <ng-autocomplete 
+      [data]="options" 
+      placeholder="Search Location" 
+      (selected)='selectEvent($event)'
+      (inputChanged)='onChangeSearch($event)'
+      (inputFocused)='onFocused($event)'
+      historyIdentifier="options"   
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+      [id]="'testauto'"
+      >
+  </ng-autocomplete>
+
+  {{itemTemplate}}
+  <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+  </ng-template> -->
+
+  <div [formGroup]="parentForm">
+    <input 
+    [id]="id" 
+    class="form-control" 
+    [formControlName]="controlName" 
+    (input)="onValueChanged()"
+    [placeholder]="placeholder" 
+    [ngClass]="{ 'is-invalid': submit &&parentForm.get(controlName)?.errors }"    
+    type="text" 
+    />
+    <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        <!-- Check for the "minlength" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('minlength')">
+          {{ controlName | titlecase }} must have at least {{ parentForm.get(controlName)?.getError('minlength')?.requiredLength }} characters (currently {{ parentForm.get(controlName)?.getError('minlength')?.actualLength }} characters).
+        </span>
+      </div>
+  </div>

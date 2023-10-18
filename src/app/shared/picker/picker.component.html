@@ -1,0 +1,55 @@
+   <!-- end col -->
+
+<div [formGroup]="parentForm">
+<div *ngIf="type === 1">
+   <input 
+        [formControlName]="controlName"
+        [ngClass]="{ 'is-invalid': submit && parentForm.get(controlName)?.hasError('required') }"
+        type="text" 
+        class="form-control" bsDaterangepicker 
+        [placeholder]="placeholder?placeholder:''"
+        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue' ,showWeekNumbers: false}"
+        (bsValueChange)="onDateRangeChange($event)"
+        >
+
+        <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        </div>
+</div>
+
+<div *ngIf="type === 2">
+        <input
+        type="text" 
+        class="form-control flatpickr-input" 
+        bsDatepicker
+        showWeekNumbers="false"
+        [placeholder]="placeholder?placeholder:''"
+        [formControlName]="controlName"
+        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue',showWeekNumbers: false }">
+         
+        <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        </div>
+</div>
+
+
+
+ <!-- end col -->
+ <div *ngIf="type === 3">
+        <timepicker 
+        [formControlName]="controlName"
+        class="timepicker" 
+        [showMeridian]="showMeridian">
+        </timepicker>
+        <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        </div>
+</div>
+</div>
+
+<!-- end col -->
+
+<!-- end col -->

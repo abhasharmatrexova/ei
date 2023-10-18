@@ -1,0 +1,40 @@
+export const weekDays = () =>{
+    let list =  [
+      {
+        "id":1,
+        "text":"Monday",
+        "name":"M",
+       },
+       {
+        "id":2,
+        "text":"Tuesday",
+        "name":"T",
+       },
+       {
+        "id":3,
+        "text":"Wednesday",
+        "name":"W",
+       },
+       {
+        "id":4,
+        "text":"Thursday",
+        "name":"T",
+       },
+       {
+        "id":5,
+        "text":"Friday",
+        "name":"F",
+       },
+       {
+        "id":6,
+        "text":"Saturday",
+        "name":"S",
+       },
+       {
+        "id":7,
+        "text":"Sunday",
+        "name":"S",
+       }
+    ];
+    return list;
+  }

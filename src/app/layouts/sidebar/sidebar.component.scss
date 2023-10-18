@@ -1,0 +1,16 @@
+.scrollable-menu {
+    /* Set a fixed height for your menu to enable scrolling */
+    height: 100%;
+    /* Add overflow-y: hidden to hide the vertical scrollbar by default */
+    overflow-y: hidden;
+  }
+  
+  .scrollable-menu:hover {
+    /* On hover, set overflow-y to auto to show the vertical scrollbar */
+    overflow-y: auto;
+  }
+  
+
+  .navbar-brand-box {
+    overflow: hidden; /* Hide the scrollbar */
+  }

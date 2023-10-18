@@ -1,0 +1,50 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+                       <div class="card-body">
+                    <div class="row gy-2 gx-3 mb-3 align-items-center"  *ngFor="let formData of formDataArray; let i = index">
+
+                        <div class="col-sm-auto col-md-2">
+                          <app-fields [parentForm]="parentForm" [submit]="submitted" [(ngModel)]="formData.name"  [controlName]="'name'" [type]="'text'" [placeholder]="'Staff name'"></app-fields>
+                          <!--<input type="text" id="name" [(ngModel)]="formData.name"  class="form-control" name="name" required placeholder="Staff name" >-->
+                        </div>
+
+                        <div class="col-sm-auto col-md-2">
+                          <app-fields [parentForm]="parentForm" [submit]="submitted" [(ngModel)]="formData.department"  [controlName]="'department'" [type]="'text'" [placeholder]="'Department'"></app-fields>
+                        </div>
+
+                        <div class="col-sm-auto col-md-2">
+                          <app-fields [parentForm]="parentForm" [submit]="submitted" [(ngModel)]="formData.designation"  [controlName]="'designation'" [type]="'text'" [placeholder]="'Designation'"></app-fields>
+                        </div>
+
+                      <div class="col-sm-auto col-md-2">
+                        <app-fields [parentForm]="parentForm" [submit]="submitted" [(ngModel)]="formData.phone"  [controlName]="'phone'" [type]="'text'" [placeholder]="'Phone'"></app-fields>
+                      </div>
+
+                      <div class="col-sm-auto col-md-2">
+                        <app-fields [parentForm]="parentForm" [submit]="submitted" [(ngModel)]="formData.email"  [controlName]="'email'" [type]="'email'" [placeholder]="'Email'"></app-fields>
+                      </div>
+
+                        <!--end col-->
+                        <div class="col-sm-auto">
+                            <button type="button" class="btn btn-danger"  (click)="removeRow(i)">Remove</button>
+                        </div>
+
+                        <!--end col-->
+                    </div>
+
+                    <div class="col-sm-auto">
+                        <button type="button" class="btn btn-success" (click)="addRow()">Add Row</button>
+                  </div>
+                    <!--end row-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

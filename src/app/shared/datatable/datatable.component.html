@@ -1,0 +1,212 @@
+
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">
+          <div class="card-header">
+          </div><!-- end card header -->
+
+          <div class="card-body">
+              <div id="customerList">
+
+              <div class="row g-4 mb-3">
+
+                <div class="col-sm-auto">
+                    <div class="d-flex justify-content-sm-end">
+                          <div *ngFor="let status of statusCounts">
+                            <input type="checkbox"
+                            name="automotive"
+                            value="{{status.id}}"
+                            [(ngModel)]="status.checked"
+                            (ngModelChange)="filterResults(status.id)">
+                             {{status.status_name}} ({{status.count}})
+                          </div>
+                      </div>
+                </div>
+
+              </div>
+
+
+
+                <div class="row g-4 mb-3 col-md-12">
+                  <div class="col-sm-auto col-md-4">
+                      <div>
+                           <!-- <a *ngIf="addBtnUrl !=''" [href]="addBtnUrl" type="button" class="btn btn-success add-btn me-2" >
+                            <i class="ri-plug-2-fill"></i>
+                              Add
+                           </a> -->
+                           <a [routerLink]="addBtnUrl" type="button" class="btn btn-success add-btn me-2">
+                            <i class="ri-plug-2-fill"></i> Add
+                          </a>
+
+                            <!-- <button class="btn btn-subtle-danger" (click)="this.popupModalComponent.deleteModal?.show()">
+                              <i class="ri-delete-bin-2-line"></i>
+                            </button> -->
+                      </div>
+                  </div>
+
+                  <div class="col-sm  col-md-4">
+                    <div>
+                      <app-picker [type]="1" (dateRangeChange)="onDateRangeChange($event)"></app-picker>
+                    </div>
+                  </div>
+
+                  <div class="col-sm col-md-4">
+                      <div class="d-flex justify-content-sm-end">
+                          <div class="search-box ms-2">
+                            <input type="text" [(ngModel)]="searchValue" placeholder="Search..." class="form-control search" >
+                            <i class="ri-search-line search-icon"></i>
+                          </div>
+                      </div>
+                  </div>
+
+                </div>
+
+                <div class="table-responsive table-card mt-3 mb-1">
+                  <table class="table align-middle table-nowrap" id="customerTable">
+
+                      <thead class="table-light">
+                        <tr>
+                          <!-- <th scope="col" style="width: 50px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="checkAll" value="option"
+                                [(ngModel)]="selectAll" (ngModelChange)="selectAllCheckbox($event)">
+                            </div>
+                          </th>
+                          <th class="gridjs-th"></th> -->
+                          <!-- Iterate over columns array to generate headers -->
+                          <ng-container *ngFor="let header of theadData">
+                            <th (click)="sort(header.value)" class="gridjs-th sort">{{ header.text }}</th>
+                          </ng-container>
+                        </tr>
+                      </thead>
+
+                      <div id="elmLoader">
+                        <div class="spinner-border text-primary avatar-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                       </div>
+                       
+                      <tbody>
+                        <!-- <tr *ngFor="let item of data | filter: searchValue | orderBy: sortKey:reverse | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"> -->
+                            <tr *ngFor="let item of filteredData | filter: searchValue | orderBy: sortKey | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                              <!-- <td><input type="checkbox" [(ngModel)]="item.selected" (ngModelChange)="onItemChange()"></td>
+                              <td><input type="radio" [value]="item.id" [(ngModel)]="selectedRadioId"(change)="onRadioChange(item.id)"  name="radioGroup"></td> -->
+                              <td *ngFor="let header of theadData">
+
+                                <div *ngIf="header.value === 'google_location.name'">
+                                  {{ item[header.value] }}
+                                  <!-- <i class="ri-edit-2-fill"  (click)="mapOpen(item.google_location)"></i> -->
+                                </div>
+
+                                <div *ngIf="!['location'].includes(header.type) && !['actions'].includes(header.value) && !['date'].includes(header.type)">{{ getValue(item,header.value) }}</div>
+                                <div *ngIf="['location'].includes(header.type)">
+                                    
+                                    <div *ngIf="!header.locationNested">
+                                      <a href="https://www.google.com/maps/search/?api=1&query={{item.location.lat}},{{item.location.lng}}&query_place_id={{item.location.place_id}}" class="btn btn-sm btn btn-subtle-primary" target="_blank" tooltip="Map View">
+                                        <i class="ri-map-pin-line"></i>
+                                      </a>&nbsp;
+                                      <a href="https://www.google.com/maps/@?layer=c&cbll={{item.location.lat}},{{item.location.lng}}&cbp=12,0,0,0,0" class="btn btn-sm btn btn-subtle-primary" target="_blank" tooltip="Street View">
+                                        <i class="ri-road-map-line"></i>
+                                      </a>
+                                    </div>
+                                    <div *ngIf="header.locationNested">
+                                      <a href="https://www.google.com/maps/search/?api=1&query={{getValue(item,header.value+'.lat')}},{{getValue(item,header.value+'.lng')}}&query_place_id={{getValue(item,header.value+'.place_id')}}" class="btn btn-sm btn btn-subtle-primary" target="_blank" tooltip="Map View">
+                                        <i class="ri-map-pin-line"></i>
+                                      </a>&nbsp;
+                                      <a href="https://www.google.com/maps/@?layer=c&cbll={{getValue(item,header.value+'.lat')}},{{getValue(item,header.value+'.lng')}}&cbp=12,0,0,0,0" class="btn btn-sm btn btn-subtle-primary" target="_blank" tooltip="Street View">
+                                        <i class="ri-road-map-line"></i>
+                                      </a>
+                                    </div>
+                                    
+                                </div>
+                                <div *ngIf="['date'].includes(header.type)"> {{item[header.value] | date: 'dd-MM-yyyy'}}</div>
+                                <div *ngIf="['actions'].includes(header.value)" class="d-flex gap-2" >
+
+                                    <div  *ngFor="let action of header.data">
+                                      <div class="clearable">
+                                        <button *ngIf="action.btnType =='Edit' && !action.url" class="btn btn-sm btn-subtle-success"
+                                            (click)="actionBtn('edit',item)">
+                                            <i class="ri-edit-2-fill" *ngIf="action.icons"></i>
+                                            <span>{{action.btnText}}</span>
+                                        </button>
+                                      </div>
+                                      <div class="clearable">
+                                        <a *ngIf="action.btnType =='Custom' && action.url" [routerLink]="('/' + action.url) + (item.id || item._id)" tooltip="{{action.btnToolTipText}}" >
+                                          <app-boxicon [iconClass]="action.iconClass"></app-boxicon>
+                                        </a>
+
+
+                                      </div>
+
+                                      <div class="clearable">
+                                        <a *ngIf="action.btnType =='Edit' && action.url" class="btn btn-sm btn-subtle-success"
+                                            [routerLink]="('/' + action.url) + (item.id || item._id)"
+                                            placement="top" [tooltip]="action.btnToolTipText"
+                                            >
+                                            <i class="ri-edit-2-fill" *ngIf="action.icons"></i>
+                                            <span>{{action.btnText}}</span>
+                                        </a>
+                                      </div>
+                                      <div class="clearable">
+                                        <button *ngIf="action.btnType =='Delete'" class="btn btn-sm btn btn-subtle-danger"
+                                          (click)="actionBtn('delete',item)"
+                                          placement="top" [tooltip]="action.btnToolTipText">
+                                          <i class="ri-delete-bin-2-line" *ngIf="action.icons"></i>
+                                          <span>{{action.btnText}}</span>
+                                        </button>
+                                      </div>
+
+                                    </div>
+                                    <div class="remove">
+
+
+                                    </div>
+                                </div>
+                              </td>
+
+                              <!-- <td class="status"><span class="badge text-uppercase"
+                                [ngClass]="{'bg-success-subtle text-success' : item.status_id =='3','bg-danger-subtle text-danger' : item.status_id =='2' || item.status_id =='1'}">{{item.status_name}}</span>
+                              </td> -->
+
+                            </tr>
+                      </tbody>
+
+                  </table>
+                </div>
+
+                <div class="row justify-content-md-between align-items-md-center">
+                    <div class="col-sm-12 col-md-5">
+                        <!-- <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+                            Showing
+                            {{service.startIndex}} to
+                            {{service.endIndex}} of {{service.totalRecords}}
+                            entries
+                        </div> -->
+
+                        <!-- <div class="data-table-info">
+                          Showing {{ calculateDisplayRange().startIndex }} to {{ calculateDisplayRange().endIndex }} of {{ totalEntries }} entries
+                        </div> -->
+
+                    </div>
+                    <!-- Pagination -->
+                    <div  class="col-sm-12 col-md-5">
+                        <div class="text-md-right float-md-end gridjs-pagination">
+                            <!-- <pagination [totalItems]="(total$ | async)!" [(ngModel)]="service.page"
+                                [itemsPerPage]="service.pageSize"></pagination> -->
+                                <pagination-controls (pageChange)="p = $event"  class="pagination-wrap hstack gap-2"></pagination-controls>
+                        </div>
+                    </div>
+                    <!-- End Pagination -->
+                </div>
+
+
+          </div>
+       </div><!-- end card -->
+    </div>
+<!-- end col -->
+  </div>
+<!-- end col -->
+</div>
+
+
+<!-- Modal -->

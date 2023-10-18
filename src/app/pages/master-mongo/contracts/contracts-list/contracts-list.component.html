@@ -1,0 +1,19 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Contracts" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<app-datatable
+
+  [theadData]="theadData"
+  [tbodyData]="tbodyDataComputed"
+  [p]="p"
+  [itemsPerPage]="itemsPerPage"
+  [searchValue]="searchValue"
+  [sortKey]="sortKey"
+  [reverse]="reverse"
+  [selectAll]="selectAll"
+  [statusCounts]="statusCounts"
+  [addBtnUrl]="addBtnUrl"
+  (actionBtnEvent)="actionBtn($event)"
+
+></app-datatable>

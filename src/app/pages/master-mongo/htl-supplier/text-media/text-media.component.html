@@ -1,0 +1,88 @@
+<div class="container">  
+     
+    <form [formGroup]="productForm" >  
+        
+      <div formArrayName="textMedia">
+
+        <div *ngFor="let media of textMedia().controls; let i=index" [formGroupName]="i">  
+
+            <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <input [placeholder]="'Itinerary Text '+(i+1)" id="{{'itinerary_text'+i}}" class="form-control"
+                            [id]="'itinerary_text'+i" type="text" formControlName="itinerary_text" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+
+                            <div class="col-sm-5">
+                                <div>
+                                    <h5 class="fs-sm fw-medium text-muted"></h5>
+                                    <div class="light">
+                                      <input [placeholder]="'Attachment ' + (i + 1)" 
+                                      class="form-control" type="file"
+                                       (change)="onFileChange($event, i)" />
+                                  </div>
+                                </div>
+                              </div>
+
+                            <!-- <ngx-dropzone   (change)="onFileChange($event,i)"  [accept]="'image/*'">
+                                <ngx-dropzone-label>
+                                    <div class="mb-3">
+                                        <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                    </div>
+                
+                                    <h5>Drop files here or click to upload.</h5>
+                                </ngx-dropzone-label>
+                            </ngx-dropzone>
+                            
+                            
+                            <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" class="border rounded"
+                                *ngFor="let imageURL of mediaFiles" [removable]="true" (removed)="onRemove(imageURL)">
+                                <ngx-dropzone-label>
+                                    <div class="d-flex p-2">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar-sm bg-light rounded">
+                                                <img class="img-fluid rounded d-block" id="contact-img" src="{{imageURL}}"
+                                                    alt="Dropzone-Image">
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="pt-1">
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngx-dropzone-label>
+                            </ngx-dropzone-preview> -->
+                            
+                            <!-- <input [placeholder]="'Itinerary Text '+(i+1)" id="{{'supplier_media'+i}}" class="form-control"
+                            [id]="'supplier_media'+i" type="text" formControlName="supplier_media" /> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row gy-3" >
+                <div class="col-sm-2">
+                <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+            </div>
+
+            </div>
+          
+
+          </div>
+
+      </div>
+    </form>   
+        
+    <br/>  
+  </div>  

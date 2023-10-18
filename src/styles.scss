@@ -1,0 +1,186 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+// @import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+/* Importing Select SCSS file. */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.emoji-mart {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+}
+
+.emoji-mart-preview {
+  display: none;
+}
+
+.small-font {
+  .dz-text {
+    font-size: x-small;
+  }
+}
+
+.apex-charts {
+  div {
+    min-height: 0 !important;
+  }
+}
+
+ngx-dropzone-image-preview {
+  max-width: none !important;
+  justify-content: normal !important;
+  height: 80px !important;
+  min-height: 80px !important;
+  background-image: none !important;
+
+  img {
+    opacity: 1 !important;
+  }
+
+  ngx-dropzone-label {
+    position: unset !important;
+  }
+}
+
+ngx-dropzone-preview {
+  max-width: none !important;
+  justify-content: normal !important;
+  height: 80px !important;
+  min-height: 80px !important;
+  background-image: none !important;
+
+  img {
+    opacity: 1 !important;
+  }
+
+  ngx-dropzone-label {
+    position: unset !important;
+  }
+}
+
+
+
+.progress-nav {
+  .stepper {
+    .stepper-body[_ngcontent-ng-c625643793] {
+      margin: 0;
+    }
+
+    .completed {
+      .nav-link {
+        color: #fff;
+        background-color: var(--tb-primary);
+      }
+    }
+
+    .step[_ngcontent-ng-c625643793] {
+      .nav-link {
+        z-index: 1;
+        position: relative;
+      }
+
+      &:after {
+        z-index: 0;
+        height: 1px;
+        background-color: var(--tb-border-color);
+        left: -100%;
+      }
+    }
+
+    .step.completed[_ngcontent-ng-c625643793]+.step[_ngcontent-ng-c625643793]:after {
+      background-color: var(--tb-primary);
+    }
+  }
+}
+
+
+.step-arrow-nav {
+  .stepper {
+    .stepper-body[_ngcontent-ng-c625643793] {
+      margin: 0;
+    }
+
+    .completed {
+      .nav-link {
+        color: var(--tb-primary);
+      }
+
+      background-color: rgba(var(--tb-primary-rgb), .15);
+    }
+
+    .active {
+      .nav-link {
+        color: var(--tb-primary);
+      }
+    }
+
+    .step[_ngcontent-ng-c625643793] {
+      .nav-link {
+        z-index: 1;
+        position: relative;
+      }
+    }
+  }
+}
+
+.vertical-wizard {
+  .stepper {
+    .stepper-body[_ngcontent-ng-c625643793] {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .step-title {
+      // display: none;
+      position: relative !important;
+      bottom: 0 !important;
+
+      i {
+        color: var(--tb-danger);
+      }
+    }
+
+    .steps {
+      gap: 8px;
+
+      .step {
+        background-color: rgba(var(--tb-light-rgb), .4) !important;
+        border: 1px solid var(--tb-border-color);
+        border-radius: 0.25rem;
+
+        &.active {
+          .nav-link {
+            .step-title {
+              i {
+                color: var(--tb-primary);
+              }
+            }
+
+            color: var(--tb-primary);
+          }
+
+          border-color: rgba(var(--tb-primary-rgb), 1);
+        }
+
+        &.completed {
+          .nav-link {
+            .step-title {
+              i {
+                color: var(--tb-success);
+              }
+            }
+
+            color: var(--tb-success);
+          }
+
+          border-color: rgba(var(--tb-success-rgb), 1);
+        }
+      }
+    }
+  }
+}

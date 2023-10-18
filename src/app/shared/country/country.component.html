@@ -1,0 +1,31 @@
+
+
+            <!-- Select Drop Down -->
+
+             <div [formGroup]="parentForm">
+                <ng-select  
+                 [formControlName]="controlName"
+                 [ngClass]="{ 'is-invalid': submit && parentForm.get(controlName)?.hasError('required') }"
+                 [placeholder]="selectedAccount"
+                 appearance="outline"
+                 [searchable]="true" 
+                 [clearable]="true"
+                labelForId="heroId">
+                  <ng-option *ngFor="let country of item" [value]="country.code"  [ngClass]="{ 'is-invalid': submit && parentForm.get(controlName)?.hasError('required') }">
+                      <img *ngIf="isFLagRequired" src="{{country.flagImg}}" alt="country flag" class="options-flagimg" height="20">
+                      <span *ngIf="isCNameRequired">({{country.code}}) {{country.name }}</span>
+                      <span *ngIf="isCodeRequired"> {{country.code }}</span>
+                      <span *ngIf="isNameRequired">{{country.name }}</span>
+                  </ng-option>
+                </ng-select>
+
+
+                <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+                  <!-- Check for the "required" error -->
+                  <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+                </div>
+
+              </div>
+            <!-- Select Drop Down -->
+
+        

@@ -1,0 +1,498 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Contracts" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0"></h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+              
+                  <div class="row">
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0"></h4>
+                            </div><!-- end card header -->
+                
+                            <div class="card-body">
+                                <accordion class="accordion" id="default-accordion-example">
+                                    <accordion-group class="accordion-item" [isOpen]="isFirstOpen">
+                                        <h2 accordion-heading class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button">
+                                                Request a Contract
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+                                               
+                                                
+                                                <div class="row gy-4">
+
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Select company'" 
+                                                                    [items]="company" 
+                                                                    [controlName]="'company'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Select Office'" 
+                                                                    [items]="office" 
+                                                                    [controlName]="'office'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+                                
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Requested'" 
+                                                                    [items]="staff" 
+                                                                    [controlName]="'requested'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Supplier'" 
+                                                                    [items]="suppliers" 
+                                                                    [controlName]="'supplier'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button" type="button">
+                                                Contracting Response
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'contract_no'"
+                                                                [type]="'text'"
+                                                                [placeholder]="'Contact No'">
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-picker 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'applicable_dates'"
+                                                                [type]="1"
+                                                                [placeholder]="'Applicable Dates'">
+                                                                </app-picker>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+
+                                        <br><br>
+
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                      <div>
+                                                            <h5 class="fs-sm fw-medium text-muted">Attachments</h5>
+                                                        </div>
+                                                  
+                                                    <div formArrayName="attachments">
+                                                      <div *ngFor="let attachmentsForm of attachments.controls; let index = index" class="row mt-3">
+                                                        <div class="col-sm-5">
+                                                          <div [formGroupName]="index">
+                                                            <div>
+                                                              <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                              <div class="light">
+                                                                <input [placeholder]="'Item Name ' + (index + 1)" id="{{ 'title' + index }}" class="form-control" type="text" formControlName="title" />
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                  
+                                                        <div class="col-sm-5">
+                                                          <div [formGroupName]="index">
+                                                            <div>
+                                                              <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                              <div class="light">
+                                                                <input [placeholder]="'Attachment ' + (index + 1)" 
+                                                                class="form-control" type="file"
+                                                                 (change)="onFileChange($event, index)" />
+        
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        
+                                                  
+                                                        <div class="col-sm-2">
+                                                          <div>
+                                                            <button *ngIf="index == 0" type="button" (click)="addNewItem()" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                                                              <i class="ri-menu-add-fill"></i>
+                                                            </button>
+                                                            <button *ngIf="index > 0" type="button" (click)="removeNewItem(index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+                                                              <i class="ri-menu-unfold-fill"></i>
+                                                            </button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div> </div>
+                                                  </div>
+
+                                                <div class="container">
+                                                    <div class="row gy-4">
+                                                        <div class="col-sm-12">
+                                                            <div class="image-container">
+
+                                                                <div *ngFor="let media of mediaFiles; let index = index" class="image-item">
+                                                                    <img [src]="media" alt="" height="100px" width="100px">
+                                                                    <span class="image-prev-close" (click)="deleteImage(index,'1')">X</span>
+                                                                </div>
+                                                                
+
+                                                                <div *ngFor="let media of oldfiles; let index = index" class="image-item">
+                                                                  
+                                                                    <img [src]="getImage(media)"  alt="" height="100px" width="100px">
+                                                                    <span class="image-prev-close" (click)="deleteImage(index,'2')">X</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted">Applicable Tour Type</h5>
+                                                        </div>
+                            
+                                                        <div formArrayName="applicable_tourtype" >
+                                                            <div *ngFor="let applicableTourtypeForm of applicable_tourtype.controls; let index = index" class="row mt-3"  >
+                                                                <div [formGroupName]="index" class="col-sm-9"> 
+                                                                 
+                                                                    <!-- <input [placeholder]="'Item Name '+(index+1)" id="{{'name'+index}}" class="form-control" type="text" formControlName="item" /> -->
+                                                                      <select  formControlName="item" id="{{'name'+index}}"  class="form-control">
+                                                                       
+                                                                        <option [ngValue]="null" disabled selected>Select an option</option>
+                                                                        <option *ngFor="let type of tTypes" [ngValue]="type.id">{{ type.name }}  {{type.id}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <button *ngIf="index == 0" type="button" (click)="add('tour_type')" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-add-fill"></i>
+                                                                    </button>
+                                                                    <button *ngIf="index > 0" type="button" (click)="remove('tour_type',index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-unfold-fill"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted">Applicable Agent</h5>
+                                                        </div>
+                            
+                                                        <div formArrayName="applicable_agent" >
+                                                            <div *ngFor="let applicableAgentForm of applicable_agent.controls; let index = index" class="row mt-3"  >
+                                                                <div [formGroupName]="index" class="col-sm-9"> 
+                                                                      <select  formControlName="item" id="{{'name'+index}}"  class="form-control">
+                                                                        <option [ngValue]="null" disabled selected>Select an option</option>
+                                                                        <option *ngFor="let type of agent" [ngValue]="type.id">{{ type.name }}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <button *ngIf="index == 0" type="button" (click)="add('agent')" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-add-fill"></i>
+                                                                    </button>
+                                                                    <button *ngIf="index > 0" type="button" (click)="remove('agent',index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-unfold-fill"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted">Applicable Tour  </h5>
+                                                        </div>
+                            
+                                                        <div formArrayName="applicable_tour" >
+                                                            <div *ngFor="let applicableTourForm of applicable_tour.controls; let index = index" class="row mt-3"  >
+                                                                <div [formGroupName]="index" class="col-sm-9"> 
+                                                                      <select  formControlName="item" id="{{'name'+index}}"  class="form-control">
+                                                                        <option [ngValue]="null" disabled selected>Select an option</option>
+                                                                        <option *ngFor="let type of tour" [ngValue]="type.id">{{ type.name }}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <button *ngIf="index == 0" type="button" (click)="add('tour')" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-add-fill"></i>
+                                                                    </button>
+                                                                    <button *ngIf="index > 0" type="button" (click)="remove('tour',index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-unfold-fill"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted">Pre Contract</h5>
+                                                        </div>
+                            
+                                                        <div formArrayName="pre_contract" >
+                                                            <div *ngFor="let pContractForm of pre_contract.controls; let index = index" class="row mt-3"  >
+                                                                <div [formGroupName]="index" class="col-sm-9"> 
+                                                                      <!-- <select  [placeholder]="'Executed By'" formControlName="item" id="{{'name'+index}}"  class="form-control">
+                                                                        <option [ngValue]="null" disabled selected>Select an option</option>
+                                                                        <option *ngFor="let type of pContract" [ngValue]="type.id">{{ type.name }}</option>
+                                                                    </select> -->
+
+                                                                    <select formControlName="item" id="{{'name'+index}}" class="form-control">
+                                                                        <option [ngValue]="null">Executed By</option>
+                                                                        <option *ngFor="let type of pContract" [ngValue]="type.id">{{ type.name }}</option>
+                                                                      </select>
+
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <button *ngIf="index == 0" type="button" (click)="add('pre_contract')" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-add-fill"></i>
+                                                                    </button>
+                                                                    <button *ngIf="index > 0" type="button" (click)="remove('pre_contract',index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+                                                                        <i class="ri-menu-unfold-fill"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+
+
+                                                <br/><br/>
+                                                <h5 class="fs-sm fw-medium text-muted"> New Status :</h5>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Executed By'" 
+                                                                    [items]="executed" 
+                                                                    [controlName]="'executed'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                   
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                             <div class="light">
+                                                                <app-fields 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'sname'"
+                                                                [type]="'text'"
+                                                                [placeholder]="'Signed Name'">
+                                                                </app-fields>                                                       
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Department'" 
+                                                                    [controlName]="'sdepartment'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" 
+                                                                    [type]="'text'">
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                   
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                             <div class="light">
+                                                                <app-fields 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'sdegination'"
+                                                                [type]="'text'"
+                                                                [placeholder]="'Designation'">
+                                                                </app-fields>                                                       
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Phone'" 
+                                                                    [controlName]="'sphone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                   
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                             <div class="light">
+                                                                <app-fields 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'semail'"
+                                                                [type]="'text'"
+                                                                [placeholder]="'Email'">
+                                                                </app-fields>                                                       
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingThree">
+                                            <button class="accordion-button" type="button">
+                                                Approval 
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-select  
+                                                    [placeholder]="'Status'" 
+                                                    [items]="status" 
+                                                    [controlName]="'status'"
+                                                    [submit]="submitted" 
+                                                    [parentForm]="parentForm" 
+                                                    [selectedOption]="slectedStatus">
+                                                </app-select>
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+                                </accordion>
+                            </div><!-- end card-body -->
+                            <!-- <div class="card-body bg-light border-bottom border-top bg-opacity-25">
+                                <h5 class="fs-xs text-muted mb-0">HTML Preview</h5>
+                            </div> -->
+                        </div><!-- end card -->
+                    </div>
+                    <!--end col-->
+                
+            
+                    <!--end col-->
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                      <!-- <button type="submit">Submit</button> -->
+                      <app-button [buttonType]="'primary'"[disabled]="submitted" ></app-button>
+                      <a routerLink="/contracts" class="btn btn-danger ms-2">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

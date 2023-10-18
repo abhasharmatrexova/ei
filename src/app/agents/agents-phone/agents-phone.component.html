@@ -1,0 +1,75 @@
+<!-- Start Breadcrumbs -->
+<!--<app-breadcrumbs title="Agents Phone Numbers" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>-->
+<!-- End Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12 form">
+    <div class="card">
+           <div class="card-body col-sm-12 ">
+       <!-- <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">-->
+        <div class="row gy-12 ">
+          <div class="col-sm-12 inputFields ">
+              <h5 class="fs-sm fw-medium text-muted">Main Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'main_phone'" [type]="'text'" [placeholder]="'Main Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields ">
+              <h5 class="fs-sm fw-medium text-muted">Fit Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'fit_phone'" [type]="'text'" [placeholder]="'Fit Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+              <h5 class="fs-sm fw-medium text-muted">Group Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'group_phone'" [type]="'text'" [placeholder]="'Group Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+              <h5 class="fs-sm fw-medium text-muted">Series Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'series_phone'" [type]="'text'" [placeholder]="'Series Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+
+              <h5 class="fs-sm fw-medium text-muted">Emergency Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'emergency_phone'" [type]="'text'" [placeholder]="'Emergency Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+              <h5 class="fs-sm fw-medium text-muted">Accounts Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'accounts_phone'" [type]="'text'" [placeholder]="'Accounts Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+              <h5 class="fs-sm fw-medium text-muted">Escalation Phone</h5>
+              <div class="light">
+                <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'escalation_phone'" [type]="'text'" [placeholder]="'Escalation Phone'"></app-fields>
+              </div>
+          </div>
+        </div>
+<!-- </form>-->
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+

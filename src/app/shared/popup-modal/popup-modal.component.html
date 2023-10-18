@@ -1,0 +1,258 @@
+
+<div bsModal #deleteModal="bs-modal" class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" (click)="deleteModal.hide()" id="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2 text-center">
+                    <!-- <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                        colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon> -->
+                    <div class="mt-4 pt-2 fs-base mx-4 mx-sm-5">
+                        <h4>Are you Sure ?</h4>
+                        <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ? </p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button type="button" class="btn w-sm btn-light" (click)="deleteModal.hide()">Close</button>
+                    <!-- <button type="button" class="btn w-sm btn-danger " (click)="deleteData(deleteId)"
+                        id="delete-record">Yes, Delete It!</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+<div bsModal #showModal="bs-modal" class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header bg-light p-3">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" (click)="showModal.hide()" id="close-modal"></button>
+        </div>
+        
+        <!-- <form class="tablelist-form">
+            <div class="modal-body">
+                 <input type="hidden" name="id" value="" formControlName="ids" />
+
+                <div class="mb-3" id="modal-id" style="display: none;">
+                    <label for="id-field" class="form-label">ID</label>
+                    <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
+                </div>
+-->
+<!-- 
+                <div class="mb-3">
+                    <label for="customername-field" class="form-label">Customer Name</label>
+                    <input type="text" id="customername-field" class="form-control" formControlName="customer_name"
+                        [ngClass]="{ 'is-invalid': submitted && form['customer_name'].errors }"
+                        placeholder="Enter Name" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email-field" class="form-label">Email</label>
+                    <input type="email" id="email-field" class="form-control" placeholder="Enter Email"
+                        formControlName="email" [ngClass]="{ 'is-invalid': submitted && form['email'].errors }"
+                        required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone-field" class="form-label">Phone</label>
+                    <input type="text" id="phone-field" class="form-control" placeholder="Enter Phone no."
+                        formControlName="phone" [ngClass]="{ 'is-invalid': submitted && form['phone'].errors }"
+                        required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="date-field" class="form-label">Joining Date</label>
+                    <input type="text" id="date-field" class="form-control" bsDatepicker formControlName="date"
+                        [ngClass]="{ 'is-invalid': submitted && form['date'].errors }">
+                    <div class="invalid-feedback">Please select a date.</div>
+                </div>
+
+                <div>
+                    <label for="status-field" class="form-label">Status</label>
+                    <select class="form-control" data-trigger name="status-field" id="status-field"
+                        formControlName="status" [ngClass]="{ 'is-invalid': submitted && form['status'].errors }">
+                        <option value="">Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Block">Block</option>
+                    </select>
+                </div> -->
+            <!-- </div> -->
+            <div class="modal-footer">
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-light" (click)="showModal.hide()">Close</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Customer</button>
+                 </div>
+            </div>
+        <!-- </form> -->
+    </div>
+</div>
+</div>
+
+
+  
+
+
+<div class="card-body" *ngIf="type === 'head-content'">
+    <button type="button" class="btn btn-primary" (click)="template.show()">Content Modal</button>
+    <div bsModal #template="bs-modal" id="myModal" class="modal fade" tabindex="-1"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Modal Heading</h5>
+                    <button type="button" class="btn-close" (click)="template.hide()"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="fs-base">
+                        Overflowing text to show scroll behavior
+                    </h5>
+                    <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he
+                        found himself transformed in his bed into a horrible vermin. He lay on his
+                        armour-like back, and if he lifted his head a little he could see his brown
+                        belly, slightly domed and divided by arches into stiff sections.</p>
+                    <p class="text-muted">The bedding was hardly able to cover it and seemed ready to
+                        slide off any moment. His many legs, pitifully thin compared with the size of
+                        the rest of him, waved about helplessly as he looked. "What's happened to me?"
+                        he thought.</p>
+                    <p class="text-muted">It wasn't a dream. His room, a proper human room although a
+                        little too small, lay peacefully between its four familiar walls.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" (click)="template.hide()">Close</button>
+                    <button type="button" class="btn btn-primary ">Save Changes</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+
+<div class="card-body" *ngIf="type === 'success-msg'"> 
+    
+    <div>
+        <div class="hstack gap-2 flex-wrap">
+            <button type="button" class="btn btn-primary" (click)="topmodal.show()">Success Modal</button>
+            <!-- <button type="button" class="btn btn-secondary" (click)="toprightmodal.show()">Top Right
+                Modal</button>
+            <button type="button" class="btn btn-success" (click)="bottommodal.show()">Bottom Modal</button>
+            <button type="button" class="btn btn-danger" (click)="bottomrightmodal.show()">Bottom Right
+                Modal</button> -->
+        </div>
+        <div bsModal #topmodal="bs-modal" id="topmodal" class="modal fade" tabindex="-1" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center p-5">
+                        <i class="bi bi-emoji-smile display-5 text-success"></i>
+                        <div class="mt-4">
+                            <h4 class="mb-3">Your event has been created.</h4>
+                            <p class="text-muted mb-4"> The transfer was not successfully received by
+                                us.
+                                the email of the recipient wasn't correct.</p>
+                            <div class="hstack gap-2 justify-content-center">
+                                <a href="javascript:void(0);" class="btn btn-link link-success fw-medium"
+                                    (click)="topmodal.hide()"><i
+                                        class="ri-close-line me-1 align-middle"></i>
+                                    Close</a>
+                                <a href="javascript:void(0);" class="btn btn-success">Completed</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+        
+        <!-- Modal flip -->
+    
+    </div>
+</div><!-- end card-body -->
+
+<div class="card-body"  *ngIf="type === 'grid-modal'">
+   <button type="button" class="btn btn-primary" (click)="grid.show()"> Grid Modal</button>
+    <div bsModal #grid="bs-modal" class="modal fade" id="exampleModalgrid">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalgridLabel">Grid Modals</h5>
+                    <button type="button" class="btn-close" (click)="grid.hide()"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="javascript:void(0);">
+                        <div class="row g-3">
+                            <div class="col-xxl-6">
+                                <div>
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName"
+                                        placeholder="Enter firstname">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-xxl-6">
+                                <div>
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName"
+                                        placeholder="Enter lastname">
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-lg-12">
+                                <label class="form-label">Gender</label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"
+                                            name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                        <label class="form-check-label" for="inlineRadio3">Others</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                            <div class="col-xxl-6">
+                                <label for="emailInput" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailInput"
+                                    placeholder="Enter your email">
+                            </div>
+                            <!--end col-->
+                            <div class="col-xxl-6">
+                                <label for="passwordInput" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="passwordInput"
+                                    value="451326546">
+                            </div>
+                            <!--end col-->
+                            <div class="col-lg-12">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-light"
+                                        (click)="grid.hide()">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end card-body -->
+
+

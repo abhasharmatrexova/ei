@@ -1,0 +1,36 @@
+
+
+<!-- INPUT FIELD COMPONENT -->
+
+<div [formGroup]="parentForm">
+    <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch"
+          
+          [formControlName]="controlName"
+          (input)="onValueChanged()"
+          [id]="id"
+          [ngClass]="{ 'is-invalid': submit &&parentForm.get(controlName)?.errors }"
+          />
+        <label class="form-check-label" [for]="id">{{label}}</label>
+    </div>
+
+    <!-- Validation-->
+
+      <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        <!-- Check for the "minlength" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('minlength')">
+          {{ controlName | titlecase }} must have at least {{ parentForm.get(controlName)?.getError('minlength')?.requiredLength }} characters (currently {{ parentForm.get(controlName)?.getError('minlength')?.actualLength }} characters).
+        </span>
+      </div>
+
+</div>
+
+
+
+<!--<div *ngIf="submit && parentForm && parentForm.controls['firstName'] &&
+parentForm.controls['firstName'].errors &&
+parentForm.controls['firstName'].errors['required']" class="error-message">
+First Name is required.</div> -->
+

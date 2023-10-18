@@ -1,0 +1,37 @@
+
+
+<!-- INPUT FIELD COMPONENT -->
+
+<div [formGroup]="parentForm">
+    <!-- <label [for]="controlName">{{ controlName | titlecase }}:</label> -->
+    <input
+    type="{{ type }}"
+    [id]="controlName"
+    class="form-control"
+    [formControlName]="controlName"
+    (input)="onValueChanged()"
+    [placeholder]="placeholder"
+  
+    [ngClass]="{ 'is-invalid': submit &&parentForm.get(controlName)?.errors }"
+     />
+     <!-- [(ngModel)]="controlName" -->
+    <!-- Validation-->
+
+      <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+        <!-- Check for the "required" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+        <!-- Check for the "minlength" error -->
+        <span *ngIf="parentForm.get(controlName)?.hasError('minlength')">
+          {{ controlName | titlecase }} must have at least {{ parentForm.get(controlName)?.getError('minlength')?.requiredLength }} characters (currently {{ parentForm.get(controlName)?.getError('minlength')?.actualLength }} characters).
+        </span>
+      </div>
+
+</div>
+
+
+
+<!--<div *ngIf="submit && parentForm && parentForm.controls['firstName'] &&
+parentForm.controls['firstName'].errors &&
+parentForm.controls['firstName'].errors['required']" class="error-message">
+First Name is required.</div> -->
+

@@ -1,0 +1,37 @@
+<div class="container">  
+    <form [formGroup]="parentForm" >  
+        <div formArrayName="testForm">
+            <div *ngFor="let test of testForm().controls; let i=index" [formGroupName]="i">  
+
+                <div class="row gy-3">                                              
+                    <div class="col-sm-8">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                            <div class="light">
+                                <!-- <input [placeholder]="'name '+(i+1)" id="{{'name'+i}}" class="form-control"
+                                        [id]="'name'+i" type="text" formControlName="name" /> -->
+
+
+                                    <app-fields  
+                                        [placeholder]="'Name'" 
+                                        [type]="'text'"
+                                        [controlName]="'name'"
+                                        [submit]="submitted" 
+                                        [parentForm]="parentForm" >
+                                    </app-fields>
+
+                            </div>
+                        </div>
+                    </div>
+             
+                    <div class="col-sm-4">
+                        <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                        <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+                    </div>
+                </div>
+            
+
+          </div>
+       </div>
+    </form>   
+  </div>  

@@ -1,0 +1,1090 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Htl Supplier" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0"></h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+              
+                  <div class="row">
+                    <div class="col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0"></h4>
+                            </div>
+                
+                            <div class="card-body">
+                                <accordion class="accordion" id="default-accordion-example">
+                                    <accordion-group class="accordion-item" [isOpen]="isFirstOpen">
+                                        <h2 accordion-heading class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button">
+                                                Supplier Details
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+                                               
+                                                
+                                                <div class="row gy-4">
+
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'name'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Name'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'sname'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Short Name'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+                                
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                 <app-select  
+                                                                    [placeholder]="'Supplier Type'" 
+                                                                    [items]="suppliers" 
+                                                                    [controlName]="'supplier'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Country Code'" 
+                                                                    [items]="countries" 
+                                                                    [controlName]="'country_cd'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                 <app-select  
+                                                                    [placeholder]="'City Code'" 
+                                                                    [items]="cities" 
+                                                                    [controlName]="'city_cd'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'address_1'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Address 1'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                [parentForm]="parentForm"
+                                                                [submit]="submitted"
+                                                                [controlName]="'address_2'"
+                                                                [type]="'text'"
+                                                                [placeholder]="'Address 2'">
+                                                            </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'address_3'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Address 3'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-place-autocomplete
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'geo_location'"
+                                                                    [id]="'geo_location'"
+                                                                    [type]="'text'"                                
+                                                                    [placeholder]="'Enter location'"
+                                                                    (setAddress)="getAddress($event)"
+                                                                    > 
+                                                                </app-place-autocomplete>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'native_name'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Native Name'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                 <app-fields 
+                                                                   [parentForm]="parentForm" 
+                                                                   [submit]="submitted" 
+                                                                   [controlName]="'description'"
+                                                                   [type]="'textarea'"
+                                                                   [placeholder]="'Description'">
+                                                                </app-fields>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Max Child Age'" 
+                                                                    [items]="age" 
+                                                                    [controlName]="'max_child_age'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Max Infant Age'" 
+                                                                    [items]="age" 
+                                                                    [controlName]="'max_infant_age'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Star Rating'" 
+                                                                    [items]="rating" 
+                                                                    [controlName]="'star_rating'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Currency'" 
+                                                                    [items]="currencies" 
+                                                                    [controlName]="'currency'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'utl'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Url'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'critical_supplier'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Critical Supplier'">
+                                                                </app-fields>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'hq_id'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Hq ID'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [placeholder]="'Allotment Release Days'" 
+                                                                    [items]="days" 
+                                                                    [controlName]="'allotment_release_days'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'chain_id'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Chain ID'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <!-- <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button" type="button">
+                                                Text and Media Starts 
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                
+                                                <div class="row gy-8"  *ngFor="let formData of formDataArray; let i = index">
+                                                    <div class="row gy-3" > 
+                                                        <div class="col-sm-6">
+                                                            <div>
+                                                                <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                                <div class="light">
+                                                                    <app-fields 
+                                                                        [(ngModel)]="formData.itinerary_text" 
+                                                                        [parentForm]="parentForm"
+                                                                        [submit]="submitted"
+                                                                        [controlName]="'itinerary_text'"
+                                                                        [type]="'text'"
+                                                                        [placeholder]="'Itinerary Text'">
+                                                                    </app-fields> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <div class="col-sm-6">
+                                                            <div>
+                                                                <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                                <div class="light">
+                                                                    <app-select  
+                                                                        [(ngModel)]="formData.supplier_media" 
+                                                                        [placeholder]="'Supplier Media Type'" 
+                                                                        [items]="supplier_media" 
+                                                                        [controlName]="'supplier_media'"
+                                                                        [submit]="submitted" 
+                                                                        [parentForm]="parentForm" 
+                                                                        (ngModelChange)="onSupplierMediaChange()">
+                                                                    </app-select>  
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row gy-3">
+                                                        <div class="col-sm-6" >
+                                                            <div>
+                                                                <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                                <div class="light">
+                                                                    <app-fields 
+                                                                        [(ngModel)]="formData.video" 
+                                                                        [parentForm]="parentForm"
+                                                                        [submit]="submitted"
+                                                                        [controlName]="'video'"
+                                                                        [type]="'text'"
+                                                                        [placeholder]="'video'">
+                                                                    </app-fields> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <div class="col-sm-4">
+                                                            <div>
+                                                                <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                                <div class="light">
+                                                                    <ngx-dropzone (change)="onSelect($event)" [accept]="'image/*'">
+                                                                        <ngx-dropzone-label>
+                                                                            <div class="mb-3">
+                                                                                <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                                                            </div>
+                                                        
+                                                                            <h5>Drop files here or click to upload.</h5>
+                                                                        </ngx-dropzone-label>
+                                                                    </ngx-dropzone>
+                                                                    
+                                                                    
+                                                                    <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" class="border rounded"
+                                                                        *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                                                        <ngx-dropzone-label>
+                                                                            <div class="d-flex p-2">
+                                                                                <div class="flex-shrink-0 me-3">
+                                                                                    <div class="avatar-sm bg-light rounded">
+                                                                                        <img class="img-fluid rounded d-block" id="contact-img" src="{{imageURL}}" 
+                                                                                            alt="Dropzone-Image">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="flex-grow-1">
+                                                                                    <div class="pt-1">
+                                                                                        <h5 class="fs-md mb-1"> {{ f.name }}&nbsp;</h5>
+                                                                                        <p class="fs-sm text-muted mb-0"> {{ f.type }}</p> 
+                                                                                        <strong class="error text-danger"></strong>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ngx-dropzone-label>
+                                                                    </ngx-dropzone-preview>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-2">
+                                                            <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="addRow('media')">Add Row</button>
+                                                            <button *ngIf="i>0" type="button" class="btn btn-danger"  (click)="removeRow('media',i)">Remove</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                             </div> 
+                                        </div>
+                                    </accordion-group> -->
+
+                                    
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingFour">
+                                            <button class="accordion-button" type="button">
+                                                Booking conditions Starts
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFour" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Automated Bookings'"
+                                                                    [controlName]="'automated_bookings'"
+                                                                    [submit]="submitted" 
+                                                                    [type]="'text'"
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'preferred_communication'"
+                                                                    [placeholder]="'Preferred Communication'">
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Driver Gguide Room Req'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'driver_guide_room_req'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Voucher Flag'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'voucher_flag'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Online Conf'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'online_conf'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <!-- <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields 
+                                                                    [parentForm]="parentForm"
+                                                                    [submit]="submitted"
+                                                                    [controlName]="'chain_id'"
+                                                                    [type]="'text'"
+                                                                    [placeholder]="'Chain ID'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingFive">
+                                            <button class="accordion-button" type="button">
+                                                Contact Starts
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Key Code'" 
+                                                                    [items]="phonecode" 
+                                                                    [isCodeRequired]="true" 
+                                                                    [submit]="submitted" 
+                                                                    [controlName]="'key_isd'">
+                                                                </app-select>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Key Phone'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'key_phone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Alt Code'" 
+                                                                    [items]="phonecode" 
+                                                                    [isCodeRequired]="true" 
+                                                                    [submit]="submitted" 
+                                                                    [controlName]="'alt_isd'">
+                                                                </app-select>  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Alt Phone'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'alt_phone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                [parentForm]="parentForm" 
+                                                                [placeholder]="'Phone Group Code'" 
+                                                                [items]="phonecode" 
+                                                                [isCodeRequired]="true" 
+                                                                [submit]="submitted" 
+                                                                [controlName]="'res_ph_group_isd'">
+                                                            </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Phone Group Phone'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'res_ph_group_phone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                [parentForm]="parentForm" 
+                                                                [placeholder]="'Phone Fit Code'" 
+                                                                [items]="phonecode" 
+                                                                [isCodeRequired]="true" 
+                                                                [submit]="submitted" 
+                                                                [controlName]="'res_ph_fit_isd'">
+                                                            </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Phone Fit Phone'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'res_ph_fit_phone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Key Email'" 
+                                                                    [submit]="submitted" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'key_email'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Alt Email'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'alt_email'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Res Email Group'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'res_email_group'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Res Email Fit'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'res_email_fit'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                [parentForm]="parentForm" 
+                                                                [placeholder]="'Emergency Phone Code'" 
+                                                                [items]="phonecode" 
+                                                                [isCodeRequired]="true" 
+                                                                [submit]="submitted" 
+                                                                [controlName]="'emergency_phone_isd'">
+                                                            </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Emergency Phone'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'emergency_phone'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Emergency Contact Title'" 
+                                                                    [items]="emergency_contact_title" 
+                                                                    [isCodeRequired]="true" 
+                                                                    [submit]="submitted" 
+                                                                    [controlName]="'title'">
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'First Name'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'first_name'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Last Name'" 
+                                                                    [submit]="submitted" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'last_name'">
+                                                                </app-fields> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <!-- <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Text and Media 
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-text-media></app-text-media>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingSix">
+                                            <button class="accordion-button" type="button">
+                                                Close Days Starts
+                                            </button>
+                                        </h2>
+                                        <div id="collapseSix" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                
+                                            <app-close-days [lang]="languages" [day]="days"></app-close-days>
+
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Generic Cancellation Policy Starts
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-cancellation-policy [lang]="languages"></app-cancellation-policy>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Feedbacks
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-feedbacks [ratings]="rating"></app-feedbacks>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Payment Policy
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-payment-policy [lang]="languages"></app-payment-policy>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+
+                                    <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Aaccounts
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                <app-accounts [phonecode]="phonecode" [countries]="countries" [cities]="cities"></app-accounts>
+
+                                            </div>
+                                        </div>
+                                    </accordion-group> -->
+
+                                    <!-- <accordion-group class="accordion-item">
+                                        <h2 accordion-heading class="accordion-header" id="headingEight">
+                                            <button class="accordion-button" type="button">
+                                                Supplier Details
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse show">
+                                         
+                                            <div class="accordion-body">
+                                                
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-select  
+                                                                    [parentForm]="parentForm" 
+                                                                    [placeholder]="'Hotel Style'" 
+                                                                    [items]="hotel" 
+                                                                    [isCodeRequired]="true" 
+                                                                    [submit]="submitted" 
+                                                                    [controlName]="'hotel_style'">
+                                                                </app-select> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Bath Tub'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'bathtub'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row gy-4">
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Wifi'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'wifi'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="col-sm-6">
+                                                        <div>
+                                                            <h5 class="fs-sm fw-medium text-muted"></h5>
+                                                            <div class="light">
+                                                                <app-fields  
+                                                                    [placeholder]="'Supported Socket'" 
+                                                                    [type]="'text'"
+                                                                    [controlName]="'supported_socket'"
+                                                                    [submit]="submitted" 
+                                                                    [parentForm]="parentForm" >
+                                                                </app-fields>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </accordion-group> -->
+
+                                 
+                                </accordion>
+                            </div><!-- end card-body -->
+                        </div><!-- end card -->
+                    </div>
+                    <!--end col-->
+                
+            
+                    <!--end col-->
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-sm-6">
+                      <app-button [buttonType]="'primary'"[disabled]="submitted" ></app-button>
+                      <a routerLink="/htl-supplier" class="btn btn-danger ms-2">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

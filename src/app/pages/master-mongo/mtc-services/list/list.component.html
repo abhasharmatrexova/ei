@@ -1,0 +1,19 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="MTC Services" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<app-datatable
+
+  [theadData]="theadData"
+  [tbodyData]="tbodyDataComputed"
+  [addBtnUrl]="addBtnUrl"
+  [p]="p"
+  [itemsPerPage]="itemsPerPage"
+  [searchValue]="searchValue"
+  [sortKey]="sortKey"
+  [reverse]="reverse"
+  [selectAll]="selectAll"
+  [statusCounts]="statusCounts"
+  (actionBtnEvent)="actionBtn($event)"
+
+></app-datatable>

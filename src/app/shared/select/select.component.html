@@ -1,0 +1,44 @@
+
+
+            <!-- Select Drop Down -->
+
+             <div [formGroup]="parentForm">
+                <ng-select *ngIf="!groupType" 
+                 [formControlName]="controlName"
+                 [ngClass]="{ 'is-invalid': submit && parentForm.get(controlName)?.hasError('required') }"
+                 [placeholder]="placeholder?placeholder:''"
+                 appearance="outline"
+                 [searchable]="true" 
+                 [clearable]="true"
+                 [ngModel]="selectedOption"
+                 [multiple]="multiple"
+                 (change)="onValueChanged()"
+                 labelForId="heroId"
+                >
+                  <ng-option *ngFor="let item of items" [value]="item.id"  [ngClass]="{ 'is-invalid': submit && parentForm.get(controlName)?.hasError('required') }">
+                      <span >{{item.text }}</span>
+                  </ng-option>
+                </ng-select>
+
+                <ng-select *ngIf="groupType"
+                  [formControlName]="controlName"
+                  [items]="items" 
+                  [searchFn]="customSearchFn" 
+                  bindLabel="text" 
+                  bindValue="id"
+                  [groupBy]="groupBy"
+                  >
+                    <ng-template ng-optgroup-tmp let-item="item">
+                        {{item[groupBy] || 'Unnamed group'}}
+                    </ng-template>
+                </ng-select>
+
+                <div *ngIf="submit && parentForm && parentForm.get(controlName)?.touched" class="invalid-feedback">
+                  <!-- Check for the "required" error -->
+                  <span *ngIf="parentForm.get(controlName)?.hasError('required')"> {{ controlName | titlecase }} is required.</span>
+                </div>
+
+              </div>
+            <!-- Select Drop Down -->
+
+        

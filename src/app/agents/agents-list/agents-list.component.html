@@ -1,0 +1,19 @@
+<app-breadcrumbs title="My Agents" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+<!--<app-button [buttonType]="'primary'" [disabled]="false"></app-button>-->
+<app-agents-filter></app-agents-filter>
+<hr>
+
+<app-datatable
+  [theadData]="theadData"
+  [tbodyData]="tbodyDataComputed"
+  [p]="p"
+  [itemsPerPage]="itemsPerPage"
+  [searchValue]="searchValue"
+  [sortKey]="sortKey"
+  [reverse]="reverse"
+  [selectAll]="selectAll"
+  [statusCounts]="statusCounts"
+>
+
+</app-datatable>

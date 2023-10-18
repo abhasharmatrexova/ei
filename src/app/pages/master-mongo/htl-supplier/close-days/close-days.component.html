@@ -1,0 +1,133 @@
+<div class="container">  
+     
+    <form [formGroup]="productForm" >  
+        
+      <div formArrayName="closedates">
+
+        <!-- <div>  
+          <div colspan="2">Add Multiple Quantity:</div>  
+          <div width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></div>  
+        </div>  -->
+
+        <div *ngFor="let closedate of closedates().controls; let i=index" [formGroupName]="i">  
+
+            <div class="row gy-3">                                              
+              <div class="col-sm-6">
+                <div>
+                    <h5 class="fs-sm fw-medium text-muted"></h5>
+                    <div class="light">
+                      <input 
+                      formControlName="close_dates"
+                      type="text" 
+                      [placeholder]="'Close Dates '+(i+1)" 
+                      id="{{'close_dates'+i}}" 
+                      class="form-control" bsDaterangepicker 
+                      [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue' ,showWeekNumbers: false}"
+                      (bsValueChange)="onDateRangeChange($event)"
+                      >
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <ng-select 
+                            formControlName="applicable_days" 
+                            [items]="day"  
+                            [placeholder]="'Select close dates'"
+                            bindLabel="text" 
+                            bindValue="id">
+                              <ng-template ng-optgroup-tmp let-item="item">
+                                  {{item.text}}
+                              </ng-template>
+                          </ng-select>
+                        
+                            <!-- <input type="text" formControlName="applicable_days" class="form-control">   -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3" >
+              <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                          <ng-select 
+                          formControlName="language" 
+                          [items]="lang"  
+                          [placeholder]="'Select Language'"
+                          bindLabel="text" 
+                          bindValue="id">
+                            <ng-template ng-optgroup-tmp let-item="item">
+                                {{item.text}}
+                            </ng-template>
+                        </ng-select>
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-4">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                          <!-- <app-fields  
+                              [placeholder]="'Description'" 
+                              [type]="'text'"
+                              [controlName]="'close_days_description'"
+                              [submit]="submitted" 
+                              [parentForm]="parentForm" >
+                          </app-fields> -->
+                          <input [placeholder]="'Description '+(i+1)" id="{{'description'+i}}" class="form-control"
+                           [id]="'description'+i" type="text" formControlName="close_days_description" />
+
+                      </div>
+                  </div>
+              </div>
+              <!-- <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>   -->
+
+              <div class="col-sm-2">
+                <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+            </div>
+
+            </div>
+          
+
+          </div>
+
+      </div>
+
+     
+      
+      <!-- <table class="table table-bordered" formArrayName="quantities">  
+        <tr>  
+          <th colspan="2">Add Multiple Quantity:</th>  
+          <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>  
+        </tr>  
+        <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">  
+          <td>  
+              Quantity :  
+              <input type="text" formControlName="qty" class="form-control">  
+          </td>  
+          <td>  
+              Price:  
+              <input type="text" formControlName="price" class="form-control">  
+          </td>  
+          <td>  
+              <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>  
+          </td>  
+        </tr>  
+      </table>  
+       
+      <button type="submit" class="btn btn-success">Submit</button>  
+        -->
+    </form>   
+        
+    <br/>  
+    <!-- {{this.productForm.value | json}}   -->
+  </div>  

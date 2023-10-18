@@ -1,0 +1,236 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="ENT Services" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Form</h4>
+            </div>
+
+            <div class="card-body">
+               
+                <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+
+                <div class="row gy-4">
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Code</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'code'"
+                                [type]="'text'"
+                                [placeholder]="'Code'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Name</h5>
+                            <div class="light">                                
+                                <app-fields 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'name'"
+                                [type]="'text'"
+                                [placeholder]="'Name'">
+                                </app-fields>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">ENT Type</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'ENT Types'" 
+                                [items]="ent_types" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'ent_type'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Country</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'Country'" 
+                                [items]="countries" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'country'"
+                                (formValueChanged)="countryChanged($event)"
+                                >
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">City</h5>
+                            <div class="light">
+                                <app-select  
+                                [parentForm]="parentForm" 
+                                [placeholder]="'City'" 
+                                [items]="cities" 
+                                [isCodeRequired]="true" 
+                                [submit]="submitted" 
+                                [controlName]="'city'">
+                                </app-select>                                
+                                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Location</h5>
+                            <div class="light">
+                                <app-place-autocomplete
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'location'"
+                                [type]="'text'"                                
+                                [placeholder]="'Enter location'"
+                                (setAddress)="getAddress($event)"
+                                > 
+                                >
+                                </app-place-autocomplete>
+                           
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Applicable period from</h5>
+                            <div class="light">
+                                <app-picker 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'applicable_period_from'"
+                                [type]="2"
+                                [placeholder]="'From'">
+                                </app-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Applicable period to</h5>
+                            <div class="light">
+                                <app-picker 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'applicable_period_to'"
+                                [type]="2"
+                                [placeholder]="'To'">
+                                </app-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Applicable days</h5>
+                            <div class="light">
+                                <!-- <app-select 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [items]="applicable_days_list"
+                                [controlName]="'applicable_days'" 
+                                [isCodeRequired]="true"
+                                [multiple]="true"
+                                [placeholder]="'Applicable days'">
+                                </app-select> -->
+
+                                <app-checkbox
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'applicable_days'"
+                                [listItems]="applicable_days_list"
+                                [selectedValue]="parentForm.controls['applicable_days'].value"
+                                >
+
+                                </app-checkbox>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">applicable time from</h5>
+                            <div class="light">
+                                <app-picker 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'applicable_time_from'"
+                                [showMeridian]="true"
+                                [type]="3"
+                                [placeholder]="'From'">
+                                </app-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">applicable time to</h5>
+                            <div class="light">
+                                <app-picker 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'applicable_time_to'"
+                                [showMeridian]="true"
+                                [type]="3"
+                                [placeholder]="'To'">
+                                </app-picker>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-8">
+                        <div>
+                            <h5 class="fs-sm fw-medium text-muted">Description</h5>
+                            <div class="light">
+                                <app-text-area 
+                                [parentForm]="parentForm"
+                                [submit]="submitted"
+                                [controlName]="'description'"
+                                [placeholder]="'Description'">
+                                </app-text-area>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row gy-4 pt-3">
+                    <div class="col-sm-4">
+                       <app-button [buttonType]="'primary'" [disabled]="submitted"></app-button>
+                       <a routerLink="/ent-services" class="btn btn-danger ms-2">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

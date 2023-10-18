@@ -1,0 +1,22 @@
+.image-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Optional: Add horizontal scroll if necessary */
+    align-items: flex-start; /* Align images to the top of the container */
+}
+
+.image-item {
+    margin-right: 10px; /* Optional: Add spacing between images */
+    position: relative; /* Required for absolute positioning of the X button */
+}
+
+/* Position the X button in the top-right corner */
+.image-prev-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1; /* Ensure the X button is above the image */
+}

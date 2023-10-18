@@ -1,0 +1,243 @@
+<div class="container">  
+     
+    <form [formGroup]="productForm" >  
+        
+      <div formArrayName="accounts">
+
+        <div *ngFor="let account of accounts().controls; let i=index" [formGroupName]="i">  
+
+            <div class="row gy-3">                                              
+              <div class="col-sm-6">
+                <div>
+                    <h5 class="fs-sm fw-medium text-muted"></h5>
+                    <div class="light">
+                        <input
+                        type="text" 
+                        class="form-control flatpickr-input" 
+                        bsDatepicker
+                        showWeekNumbers="false"
+                        [placeholder]="' Dates '+(i+1)" 
+                        formControlName="wef_date"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue',showWeekNumbers: false }">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <input [placeholder]="'Creditor code '+(i+1)" id="{{'creditor'+i}}" class="form-control"
+                           [id]="'creditor'+i" type="text" formControlName="creditor_code" /> 
+                            <!-- <ng-select 
+                            formControlName="applicable_days" 
+                            [items]="day"  
+                            [placeholder]="'Select close dates'"
+                            bindLabel="text" 
+                            bindValue="id">
+                              <ng-template ng-optgroup-tmp let-item="item">
+                                  {{item.text}}
+                              </ng-template>
+                          </ng-select> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Company Name '+(i+1)" id="{{'company_name'+i}}" class="form-control"
+                        [id]="'company_name'+i" type="text" formControlName="company_name" /> 
+                          </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                            <input [placeholder]="'Contact Person '+(i+1)" id="{{'contact_person'+i}}" class="form-control"
+                            [id]="'contact_person'+i" type="text" formControlName="contact_person" /> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Bank Address '+(i+1)" id="{{'bank_address'+i}}" class="form-control"
+                        [id]="'bank_address'+i" type="text" formControlName="bank_address" /> 
+                          </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                            <input [placeholder]="'Branch Address '+(i+1)" id="{{'branch_address'+i}}" class="form-control"
+                            [id]="'branch_address'+i" type="text" formControlName="branch_address" /> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                            <ng-select 
+                                formControlName="isd_phone" 
+                                [items]="phonecode"  
+                                [placeholder]="'Select Phone Code'"
+                                bindLabel="text" 
+                                bindValue="id">
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                    {{item.text}}
+                                </ng-template>
+                            </ng-select>
+                            </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                            <input [placeholder]="'Phone '+(i+1)" id="{{'phone'+i}}" class="form-control"
+                            [id]="'phone'+i" type="text" formControlName="phone" /> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                            <input [placeholder]="'Email '+(i+1)" id="{{'email'+i}}" class="form-control"
+                            [id]="'email'+i" type="text" formControlName="email" />  
+                          </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                            <input [placeholder]="'VAT No '+(i+1)" id="{{'VAT_no'+i}}" class="form-control"
+                            [id]="'VAT_no'+i" type="text" formControlName="VAT_no" /> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                                <input [placeholder]="'Beneficiary Name '+(i+1)" id="{{'beneficiary_name'+i}}" class="form-control"
+                                [id]="'beneficiary_name'+i" type="text" formControlName="beneficiary_name" /> 
+                          </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                            <input [placeholder]="'Beneficiary Address '+(i+1)" id="{{'beneficiary_address'+i}}" class="form-control"
+                            [id]="'beneficiary_address'+i" type="text" formControlName="beneficiary_address" /> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row gy-3">                                              
+                <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                            <ng-select 
+                                formControlName="beneficiary_country" 
+                                [items]="countries"  
+                                [placeholder]="'Select Country'"
+                                bindLabel="text" 
+                                bindValue="id">
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                    {{item.text}}
+                                </ng-template>
+                            </ng-select>
+                          </div>
+                      </div>
+                  </div>
+  
+                  <div class="col-sm-6">
+                      <div>
+                          <h5 class="fs-sm fw-medium text-muted"></h5>
+                          <div class="light">
+                                <ng-select 
+                                    formControlName="beneficiary_city" 
+                                    [items]="cities"  
+                                    [placeholder]="'Select City'"
+                                    bindLabel="text" 
+                                    bindValue="id">
+                                    <ng-template ng-optgroup-tmp let-item="item">
+                                        {{item.text}}
+                                    </ng-template>
+                                </ng-select>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+              <!-- End -->
+            <div class="row gy-3" >
+              <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Beneficiary Postal Code '+(i+1)" id="{{'beneficiary_postal_code'+i}}" class="form-control"
+                        [id]="'beneficiary_postal_code'+i" type="text" formControlName="beneficiary_postal_code" /> 
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-4">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Lastest '+(i+1)" id="{{'lastest'+i}}" class="form-control"
+                        [id]="'lastest'+i" type="text" formControlName="lastest" /> 
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-2">
+                <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+            </div>
+
+            </div>
+          
+
+          </div>
+
+        </div>
+    </form>   
+        
+    <br/>  
+    <!-- {{this.productForm.value | json}}   -->
+  </div>  

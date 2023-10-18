@@ -1,0 +1,144 @@
+<div class="row mt-3">
+    <div class="col-sm-12">
+      <div>
+            <h5 class="fs-sm fw-medium text-muted">upload</h5>
+        </div>
+  
+    <div formArrayName="upload">
+      <div *ngFor="let uploadForm of upload.controls; let index = index" class="row mt-3">
+       
+  
+        <!-- <div class="col-sm-5">
+          <div [formGroupName]="index">
+            <div>
+              <h5 class="fs-sm fw-medium text-muted"></h5>
+              <div class="light">
+                <input [placeholder]="'Attachment ' + (index + 1)" 
+                class="form-control" type="file"
+                 (change)="onFileChange($event, index)" />
+
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+        <div class="row mt-3">
+          <div class="col-sm-12">
+            <div>
+              <h5 class="fs-sm fw-medium text-muted">Attachments</h5>
+            </div>
+        
+            <div formArrayName="attachments">
+              <div *ngFor="let attachmentsForm of attachments.controls; let index = index" class="row mt-3">
+                <div class="col-sm-5">
+                  <div [formGroupName]="index">
+                    <div class="mb-4">
+                      <ngx-dropzone (change)="onSelect($event, index)" [accept]="'image/*'">
+                        <ngx-dropzone-label>
+                          <div class="mb-3">
+                            <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                          </div>
+                          <h5>Drop files here or click to upload.</h5>
+                        </ngx-dropzone-label>
+                      </ngx-dropzone>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-sm-5">
+                  <div [formGroupName]="index">
+                    <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                        <input [placeholder]="'Attachment ' + (index + 1)" class="form-control" type="file" (change)="onFileChange($event, index)" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="col-sm-2">
+                  <div>
+                    <button *ngIf="index == 0" type="button" (click)="addNewItem()" class="btn btn-primary" placement="top" tooltip="Add More Item">
+                      <i class="ri-menu-add-fill"></i>
+                    </button>
+                    <button *ngIf="index > 0" type="button" (click)="removeNewItem(index)" class="btn btn-danger" placement="top" tooltip="Remove Item">
+                      <i class="ri-menu-unfold-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="mb-4">
+            <ngx-dropzone (change)="onSelect($event)" [accept]="'image/*'">
+                <ngx-dropzone-label>
+                    <div class="mb-3">
+                        <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                    </div>
+
+                    <h5>Drop files here or click to upload.</h5>
+                </ngx-dropzone-label>
+            </ngx-dropzone>
+            
+            <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" class="border rounded"
+                *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>
+                    <div class="d-flex p-2">
+                        <div class="flex-shrink-0 me-3">
+                            <div class="avatar-sm bg-light rounded">
+                                <img class="img-fluid rounded d-block" id="contact-img" src="{{imageURL}}"
+                                    alt="Dropzone-Image">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="pt-1">
+                                <h5 class="fs-md mb-1"> {{ f.name }}&nbsp;</h5>
+                                <p class="fs-sm text-muted mb-0"> {{ f.type }}</p>
+                                <strong class="error text-danger"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </ngx-dropzone-label>
+            </ngx-dropzone-preview>
+            <!-- end dropzon-preview -->
+        </div>
+
+  
+        <div class="col-sm-2">
+          <div>
+            <button *ngIf="index == 0" type="button" (click)="add('upload')"  class="btn btn-primary" placement="top" tooltip="Add More Item">
+              <i class="ri-menu-add-fill"></i>
+            </button>
+            <button *ngIf="index > 0" type="button" (click)="remove('upload',index)" class="btn btn-danger" placement="top" tooltip="Add More Item">
+              <i class="ri-menu-unfold-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> </div>
+  </div>
+
+
+  imageURL: any;
+  onSelect(event: any) {
+    this.files.push(...event.addedFiles);
+    let file: File = event.addedFiles[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+      setTimeout(() => {
+        // this.profile.push(this.imageURL)
+      }, 100);
+    }
+    reader.readAsDataURL(file)
+  }
+  onRemove(event: any) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
+  files: File[] = [];

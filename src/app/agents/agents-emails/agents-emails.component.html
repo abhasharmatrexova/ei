@@ -1,0 +1,67 @@
+<!-- Start Breadcrumbs -->
+<!--<app-breadcrumbs title="Agents Emails" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>-->
+<!-- End Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12 form">
+    <div class="card">
+      <div class="card-body col-sm-12 ">
+        <!-- <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">-->
+        <div class="row gy-12 ">
+          <div class="col-sm-12 inputFields ">
+            <h5 class="fs-sm fw-medium text-muted">Main Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'main_email'" [type]="'email'" [placeholder]="'Main Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields ">
+            <h5 class="fs-sm fw-medium text-muted">Fit Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'fit_email'" [type]="'email'" [placeholder]="'Fit Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+            <h5 class="fs-sm fw-medium text-muted">Group Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'group_email'" [type]="'email'" [placeholder]="'Group Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+            <h5 class="fs-sm fw-medium text-muted">Series Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'series_email'" [type]="'email'" [placeholder]="'Series Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+            <h5 class="fs-sm fw-medium text-muted">Accounts Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'accounts_email'" [type]="'text'" [placeholder]="'Accounts Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-12">
+          <div class="col-sm-12 inputFields">
+            <h5 class="fs-sm fw-medium text-muted">Escalation Email</h5>
+            <div class="light">
+              <app-fields [parentForm]="parentForm" [submit]="submitted" [controlName]="'escalation_email'" [type]="'text'" [placeholder]="'Escalation Email'"></app-fields>
+            </div>
+          </div>
+        </div>
+        <!-- </form>-->
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+
+

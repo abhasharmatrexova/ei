@@ -1,0 +1,101 @@
+<div class="container">  
+     
+    <form [formGroup]="productForm" >  
+        
+      <div formArrayName="freePolicies">
+
+        <div *ngFor="let freePolicy of freePolicies().controls; let i=index" [formGroupName]="i">  
+
+            <div class="row gy-3">                                              
+              <div class="col-sm-6">
+                <div>
+                    <h5 class="fs-sm fw-medium text-muted"></h5>
+                    <div class="light">
+                        <input
+                        type="text" 
+                        class="form-control flatpickr-input" 
+                        bsDatepicker
+                        showWeekNumbers="false"
+                        [placeholder]="' Dates '+(i+1)" 
+                        formControlName="date"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD',containerClass: 'theme-blue',showWeekNumbers: false }">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div>
+                        <h5 class="fs-sm fw-medium text-muted"></h5>
+                        <div class="light">
+                            <ng-select 
+                            formControlName="applicable_days" 
+                            [items]="day"  
+                            [placeholder]="'Select close dates'"
+                            bindLabel="text" 
+                            bindValue="id">
+                              <ng-template ng-optgroup-tmp let-item="item">
+                                  {{item.text}}
+                              </ng-template>
+                          </ng-select>
+                        
+                            <!-- <input type="text" formControlName="applicable_days" class="form-control">   -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gy-3" >
+              <div class="col-sm-6">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                          <ng-select 
+                          formControlName="language" 
+                          [items]="lang"  
+                          [placeholder]="'Select Language'"
+                          bindLabel="text" 
+                          bindValue="id">
+                            <ng-template ng-optgroup-tmp let-item="item">
+                                {{item.text}}
+                            </ng-template>
+                        </ng-select>
+
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-4">
+                  <div>
+                      <h5 class="fs-sm fw-medium text-muted"></h5>
+                      <div class="light">
+                          <!-- <app-fields  
+                              [placeholder]="'Description'" 
+                              [type]="'text'"
+                              [controlName]="'close_days_description'"
+                              [submit]="submitted" 
+                              [parentForm]="parentForm" >
+                          </app-fields> -->
+                          <input [placeholder]="'Description '+(i+1)" id="{{'description'+i}}" class="form-control"
+                           [id]="'description'+i" type="text" formControlName="close_days_description" />
+
+                      </div>
+                  </div>
+              </div>
+              <!-- <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>   -->
+
+              <div class="col-sm-2">
+                <button  *ngIf="i == 0" type="button" class="btn btn-success" (click)="add()">Add Row</button>
+                <button *ngIf="i > 0" type="button" class="btn btn-danger"  (click)="remove(i)">Remove</button>
+            </div>
+
+            </div>
+          
+
+          </div>
+
+      </div>
+     </form>   
+        
+    <br/>  
+    <!-- {{this.productForm.value | json}}   -->
+  </div>  
